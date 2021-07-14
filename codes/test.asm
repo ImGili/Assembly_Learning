@@ -1,6 +1,8 @@
         global  main
         section .text
 main:
-        sub     ax, 1H                        
-        mov     ax, bx                       
+        mov     ax, 2                        
+        add     ax, ax
+        add     ax, ax
+        add     ax, ax                  
         ret            
