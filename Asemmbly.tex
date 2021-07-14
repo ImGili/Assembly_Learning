@@ -70,4 +70,21 @@
         \therefore SA_{min} = 2000H - \frac{EA_{max}}{16} = 2000H - FFFH = 1001H\\
         \therefore SA_{max} = 2000H - \frac{EA_{min}}{16} = 2000H - 000H = 2000H
     \end{gather*}\par
+    \subsection*{检测点2.3}
+    下面的3条指令执行后，CPU几次修改IP？都是在什么时候？最后的IP中的值是多少？\par
+    \begin{verbatim}
+        mov ax, bx
+        sub ax, ax
+        jmp ax
+    \end{verbatim}\par
+    解答：
+    \begin{center}
+        一共修改了4次IP的值 \\
+        第一次： 读取\verb|mov ax, bx|之后；\\
+        第二次： 读取\verb|sub ax, ax|之后；\\
+        第三次： 读取\verb|jmp ax|之后；\\
+        第四次： 执行\verb|jmp ax|之后；\\
+        最后IP的值为0000H
+    \end{center}
+    
 \end{document}
