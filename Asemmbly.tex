@@ -1,7 +1,7 @@
 \documentclass{elegantnote}
 \title{汇编笔记}
 \author{顾磊欣}
-
+\usepackage{amssymb}
 \begin{document}
     \maketitle
     \section{基础知识}
@@ -58,5 +58,16 @@
     \end{verbatim}
     \subsection*{检测点2.2}
     (1)给定段地址为0001H，仅通过变化偏移地址寻址，CPU段寻址范围为\underline{00010H}到\underline{0001FH}。\par
-    
+    (2)有一数据存放在内存20000H单元中，现给定段地址为SA，若想用偏移地址寻到此单元。则
+    SA应满足到条件是：最小为\underline{1001H}，最大为\underline{2000H}\par
+    解答：
+    \begin{gather*}
+        \text{物理地址} = SA \times 16 + EA \\
+        SA= \frac{\text{物理地址}-EA}{16} \\
+        \because\text{物理地址}= 20000H \\
+        \therefore SA = \frac{20000H-EA}{16} = 2000H - \frac{EA}{16}\\
+        \because EA_{min} = 0000H \text{{ } 且 { }} EA_{max} = FFFFH\\
+        \therefore SA_{min} = 2000H - \frac{EA_{max}}{16} = 2000H - FFFH = 1001H\\
+        \therefore SA_{max} = 2000H - \frac{EA_{min}}{16} = 2000H - 000H = 2000H
+    \end{gather*}\par
 \end{document}
