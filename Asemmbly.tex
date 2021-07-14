@@ -29,4 +29,31 @@
     \underline{$\frac{8}{8}=1$}(B)、\underline{$\frac{8}{8}=1$}(B)、\underline{$\frac{16}{8}=2$}(B)、\underline{$\frac{16}{8}=2$}(B)、\underline{$\frac{32}{8}=4$}(B)。\par
     (7)从内存中读取1024字节的数据，8086至少要读\underline{$\frac{1024}{2}=512$}次，80386至少要读\underline{$\frac{1024}{4}=256$}次。\par
     (8)在存储器中，数据和程序以\underline{二进制}形式存放。\par
+    \newpage
+    \section{寄存器}
+    \subsection*{检测点2.1}
+    (1)写出每条汇编指令执行后相关寄存器中的值。\par
+    \begin{tabular}{lr}
+        mov ax, 62627   &   AX=\underline{F4A3H} \\
+        mov ah, 31H     &   AX=\underline{31A3H} \\
+        mov al, 23H     &   AX=\underline{3123H} \\
+        add ax, ax      &   AX=\underline{6246H} \\
+        mov bx, 826CH   &   BX=\underline{826CH} \\
+        mov cx, ax      &   CX=\underline{6246H} \\
+        mov ax, bx      &   AX=\underline{826CH} \\
+        add ax, bx      &   AX=\underline{04D8H} \\
+        mov al, bh      &   AX=\underline{0482H} \\
+        mov ah, bl      &   AX=\underline{6C82H} \\
+        add ah, ah      &   AX=\underline{D882H} \\
+        add al, 6       &   AX=\underline{D888H} \\
+        add al, al      &   AX=\underline{D810H} \\
+        mov ax, cx      &   AX=\underline{6246H} \\
+    \end{tabular}\par
+    (2)只能使用目前学过的汇编指令，最多使用4条指令，编程计算2的4次方。
+    \begin{verbatim}
+        mov ax, 2
+        add ax, ax
+        add ax, ax
+        add ax, ax
+    \end{verbatim}
 \end{document}
