@@ -42,3 +42,18 @@ break main
 # 读取寄存器
 register read ax
 ```
+### Windows平台
+```bash
+# 汇编编译
+nasm -f win64 -g test.asm
+# 链接成二进制文件
+gcc test.obj -o test
+# gdb调试
+gdb test
+# 设置断点
+b main
+# 单步调试
+ni
+# 显示汇编指令
+disassemble
+```
