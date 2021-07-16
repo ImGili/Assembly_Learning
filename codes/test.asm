@@ -1,8 +1,2 @@
-        global  main
-        section .text
-main:
-        mov     ax, 2                        
-        add     ax, ax
-        add     ax, ax
-        add     ax, ax                  
-        ret            
+mov ax, 1000
+mox ds, ax
