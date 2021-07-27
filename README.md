@@ -62,3 +62,23 @@ x /20xh 0x4480
 # 设置寄存器的值
 set $rip = 14441
 ```
+
+### DOSBOX
+```bash
+# 编译
+masm aaa.asm
+link aaa.obj
+
+# 调试
+debug aaa.exe
+# 步进程序
+-t 
+# 跳过循环
+-p
+# 运行到某一位置
+-g 0016
+# 查看某一内存，并显示汇编指令
+-u ffff:0006
+# 查看内存，并显示ascii码
+-d ffff:0006
+```
