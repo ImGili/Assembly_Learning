@@ -1,3 +1,4 @@
+# loop循环跳转回s对ip地址
 assume cs:code
 code segment
     mov ax, 0ffffh

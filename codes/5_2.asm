@@ -9,4 +9,4 @@ s:  add ax, 123
     mov ax, 4c00h
     int 21h
 code ends
-end
+end 

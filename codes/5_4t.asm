@@ -1,3 +1,4 @@
+# 查看汇编将mov al, [1]这条指令编译成什么，其实是mov ax， 0
 assume cs:code
 code segment
     mov ax, 2000h
