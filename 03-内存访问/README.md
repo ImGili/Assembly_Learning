@@ -12,7 +12,8 @@ mov ds, ax
 SS寄存器控制栈顶的段寄存器，SP寄存器控制偏移地址。
 
 # push和pop
-push指令可以使得sp寄存器加1，pop可以使得sp减1。
+> 栈是先运行指针再赋值的。初始状态需要将sp指向第一个元素放入栈后的头部。（参考教材p70）
+push指令可以使得sp寄存器减1，pop可以使得sp加1。
 ```nasm
 push ax
 pop bx
