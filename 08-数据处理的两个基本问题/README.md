@@ -104,9 +104,12 @@ int main()
     dec.pm = 38;
     dec.sr += 70;
     int i = 0;
-    dec.cp[0] = 'V';
-    dec.cp[1] = 'A';
-    dec.cp[2] = 'X';
+    dec.cp[i] = 'V';
+    i++;
+    dec.cp[i] = 'A';
+    i++;
+    dec.cp[i] = 'X';
+    i++;
 }
 
 ```
