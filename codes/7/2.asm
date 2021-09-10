@@ -1,8 +1,7 @@
 /*
  * @Author: ImGili
- * @Description: 将数据段中，第一个字符串全部变成大写，第二个字符串全部变成小写
+ * @Description: 利用[bx+idata]内存访问方式，简化代码。
  */
-
 
 assume cs:codesg, ds:datasg
 datasg segment
@@ -20,16 +19,11 @@ start:  mov ax, datasg
     s:  mov al, [bx]
         and al, 11011111B
         mov [bx], al
+        mov al, [bx+5]
+        or al, 00100000B
+        mov [bx+5], al
         inc bx
         loop s
-
-        mov bx, 5
-        mov cx, 5
-    s0:  mov al, [bx]
-        or al, 00100000B
-        mov [bx], al
-        inc bx
-        loop s0
 
     mov ax, 4c00h
     int 21h
