@@ -145,7 +145,68 @@ int main()
 
 ```
 
+# div指令
+被除数的数据长度是除数的两倍，商和余数和除数的数据长度相同。
 
+除数是8位，则被除数默认保存在ax中，商保存在al中，余数保存在ah中
 
+除数是16位，则被除数低16位保存在ax中，高16位保存在dx中，最后商会保存在ax中，余数保存在dx中
 
+例：
 
+div byte ptr ds:[0]
+
+含义为：
+$$
+(al)=\frac{(ax)}{(ds)*16+0}的商\\
+
+(ah)=\frac{(ax)}{(ds)*16+0}的余数
+$$
+
+div word ptr ds:[0]
+
+含义为：
+$$
+(ax)=\frac{(dx)\times10000H+(ax)}{(ds)*16+0}的商\\
+
+(dx)=\frac{(dx)\times10000H+(ax)}{(ds)*16+0}的余数
+$$
+
+# 伪指令dd
+含义是存储一个double word类型的数据（32位）
+
+例：
+
+```nasm
+assume cs:codesg, ds:datasg
+
+datasg segment
+dd 100001
+dw 100
+dw 0
+datasg ends
+
+codesg segment
+    start:  mov ax, datasg
+            mov ds, ax
+
+            mov ax, ds:[0]
+            mov dx, ds:[2]
+
+            div word ptr ds:[4]
+
+            mov ds:[6], ax
+
+            mov ax, 4c00h
+            int 21h
+codesg ends
+end start
+```
+
+# dup指令
+重复的意思
+
+``
+; 重复两百个0字节
+db 200 dup (0)
+``
