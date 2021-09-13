@@ -157,20 +157,18 @@ int main()
 div byte ptr ds:[0]
 
 含义为：
-$$
-(al)=\frac{(ax)}{(ds)*16+0}的商\\
 
-(ah)=\frac{(ax)}{(ds)*16+0}的余数
-$$
+$(al)=\frac{(ax)}{(ds)*16+0}的商$
+
+$(ah)=\frac{(ax)}{(ds)*16+0}的余数$
 
 div word ptr ds:[0]
 
 含义为：
-$$
-(ax)=\frac{(dx)\times10000H+(ax)}{(ds)*16+0}的商\\
 
-(dx)=\frac{(dx)\times10000H+(ax)}{(ds)*16+0}的余数
-$$
+$(ax)=\frac{(dx)\times10000H+(ax)}{(ds)*16+0}的商$
+
+$(dx)=\frac{(dx)\times10000H+(ax)}{(ds)*16+0}的余数$
 
 # 伪指令dd
 含义是存储一个double word类型的数据（32位）
