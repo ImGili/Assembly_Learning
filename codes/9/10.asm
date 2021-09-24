@@ -1,3 +1,8 @@
+/*
+ * @Author: ImGili
+ * @Description: 实验9，在屏幕中间显示三行welcome to masm!
+ */
+
 assume cs:codesg, ds:datasg, ss:stacksg
 
 datasg segment
@@ -13,34 +18,40 @@ codesg segment
     start:  mov ax, datasg
             mov ds, ax
 
-            mov ax, 0b800h
-            mov es, ax
-
             mov ax, stacksg
             mov ss, ax
             mov sp, 0
 
-            ; 三行文字，循环3次
-            mov cx, 3
-            mov bx, 902H   ; 记录三行的首地址
-            mov si, 0   ; 记录显示内存字符的偏移地址
-            mov di, 0
-        s0: push cx
+            mov ax, 0b800h
+            mov es, ax
 
-            ; 8个字符，循环8次
+            mov bx, 0
+            mov si, 10h
+            mov cx, 3
+        s0: push cx
+            push si
+            mov ah, ds:[si]
             mov cx, 16
-        s1: 
-            mov al, 77H
-            mov byte ptr es:[bx+si+0], 77H       ; 字符的字符数据
-            mov al, ds:[di+16]
-            mov es:[bx+si+1], al       ; 颜色属性赋值
-            add si, 2                           ; 指向下一个字符
+            mov si, 0
+            add si, 10*160 + 66
+            mov di, 1
+            add di, 10*160 + 66
+            mov bx, 0
+        s1: mov al, ds:[bx]
+            mov es:[bx+si], al
+            mov es:[bx+di], ah
+            inc bx
+            inc si
             inc di
-            loop s1                             ; 跳转回s1
-            
+
+            loop s1 
+
+            pop si
             pop cx
-            add bx, 160                         ; 跳到下一行
-            inc di                              ; 指向下一个字符
+            inc si
+            mov ax, es
+            add ax, 0ah
+            mov es, ax
             loop s0
 
             mov ax, 4c00h
